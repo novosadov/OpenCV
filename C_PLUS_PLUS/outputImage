@@ -3,24 +3,27 @@
 #include <opencv2/highgui.hpp>
 #include <iostream>
 #include <string>
+#include <Windows.h>
+
 using namespace cv;
 using namespace std;
 int main(int argc, char** argv)
 {
-	String imageName("Image.png"); // by default
+	String imageName("Image.png"); // Путь к изображению
 	if (argc > 1)
 	{
 		imageName = argv[1];
 	}
 	Mat image;
-	image = imread(imageName, IMREAD_COLOR); // Read the file
-	if (image.empty())                      // Check for invalid input
+	image = imread(imageName, IMREAD_COLOR); // Читает файл
+	if (image.empty())                      // Если нет файла
 	{
 		cout << "Could not open or find the image" << std::endl;
 		return -1;
 	}
-	namedWindow("Display window", WINDOW_AUTOSIZE); // Create a window for display.
-	imshow("Display window", image);                // Show our image inside it.
-	waitKey(0); // Wait for a keystroke in the window
-	return 0;
+	namedWindow("Display window", WINDOW_AUTOSIZE); // Создаёт окно
+	imshow("Display window", image);                // Выводит картинку
+	waitKey(0); 
+	system("pause");
+	return 0;	
 }
